@@ -1,6 +1,6 @@
 function initMap(){
 	//--------------
-	var map = new google.maps.Map(document.getElementById("map"), {
+	/*var map = new google.maps.Map(document.getElementById("map"), {
 		zoom:17,
 		center: {lat: -33.4569400, lng: -70.6482700},
 		mapTypeControl:false,
@@ -8,9 +8,57 @@ function initMap(){
 		streetViewControl:false
 	});
 
+	var geocoder = new google.maps.Geocoder();
+
+	document.getElementById("ruta").addEventListener("click",function(){
+		geocodeAddress(geocoder,map)
+	});
+
+	function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('origen').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+	}*/
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: -33.4569400, lng: -70.6482700}
+        });
+        directionsDisplay.setMap(map);
+
+  
+		document.getElementById("ruta").addEventListener("click", function(){
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: document.getElementById('origen').value,
+          destination: document.getElementById('destino').value,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
 
 //buscar mi posicion actual
-function buscar(){
+/*function buscar(){
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
 	}
@@ -35,12 +83,12 @@ var funcionExito = function(posicion) {
 
 var funcionError = function (error) {
 	alert("Tenemos un problema para encontrar tu ubicación");
-	}
+	}*/
 
-
-
-//	
 }
+
+
+
 /*trazar ruta
 function initMap() {
         var directionsService = new google.maps.DirectionsService;
