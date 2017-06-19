@@ -3,7 +3,7 @@ function initMap(){
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
+          zoom: 9,
           center: {lat: -33.4569400, lng: -70.6482700}//mapa parte en santiago
         });
         directionsDisplay.setMap(map);
@@ -50,5 +50,6 @@ function initMap(){
     var funcionError = function (error) {
     alert("Tenemos un problema con encontrar tu ubicacion");
     }
+
 }
 
