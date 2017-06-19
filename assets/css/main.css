@@ -18,11 +18,21 @@ button{
 	border:0;
 	font-weight: 700;
 	border-radius: 2px;
-	font-family: "Raleway";
+	font-family: 'Dosis', sans-serif;
 	font-size:15px;
 	display: block;
 }
 
 button:hover, button:focus{
 	outline: 0;
+}
+
+.alinear{
+	margin-top: 5px;
+}
+
+.alinear input{
+	display: block;
+	border:solid thin silver;
+	border-radius: 3px;
 }
