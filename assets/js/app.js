@@ -58,8 +58,10 @@ function initMap(){
         longitud = posicion.coords.longitude;
         var miUbicacion = new google.maps.Marker({
             position: {lat:latitud, lng:longitud},
-            animation: google.maps.Animation.DROP,
-            map: map
+            animation: google.maps.Animation.BOUNCE,
+            map: map,
+            icon: 'assets/img/icon2.png',
+
         });
     map.setZoom(17);
     map.setCenter({lat:latitud, lng:longitud});
@@ -67,6 +69,16 @@ function initMap(){
     var funcionError = function (error) {
     alert("No es posible encontrar tu ubicacion");
     }
+
+    function addMarker(location, map) {
+        // Add the marker at the clicked location, and add the next-available label
+        // from the array of alphabetical characters.
+        var marker = new google.maps.Marker({
+          position: location,
+          icon: '/assets/img/icono2.png',
+          map: map
+        });
+      }
 
 }
 
