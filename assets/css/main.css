@@ -16,6 +16,11 @@
 	border: thin solid silver;
 }
 
+body{
+	background-image: url(/assets/img/fondo.jpg);
+	background-size: cover;
+}
+
 button{
 	margin: 15px auto;
 	padding: 10px 15px;
